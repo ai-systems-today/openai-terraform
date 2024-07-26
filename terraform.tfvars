@@ -1,0 +1,6 @@
+rg_name                = "RG-openAI-demo"
+ai_search_name         = "ai-search-rxt-1-demo"
+openai_name            = "openai-01-demo"
+sa_name                = "openaisa102demo"
+container_name         = "democontainer"
+location               = "eastus"
