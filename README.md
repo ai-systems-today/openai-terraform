@@ -1,4 +1,4 @@
-# openai-terraform
+```plaintext
 └─ openai-terraform
    ├─ README.md
    ├─ main.tf
