@@ -2,8 +2,14 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "3.90"
+      version = "4.00"
     }
+  }
+  backend "azurerm" {
+    resource_group_name   = "rg-state"
+    storage_account_name  = "satfstaterxt"
+    container_name        = "catfstaterxt"
+    key                   = "terraform.tfstate"
   }
 }
 

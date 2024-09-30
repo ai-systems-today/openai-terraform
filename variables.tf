@@ -65,6 +65,10 @@ variable "tags" {
   }
 }
 
+variable "deployment_name" {
+  type= string
+ default = ""
+}
 
 variable "ai_search_name" {
   description = "Specifies the resource group name"
@@ -95,27 +99,5 @@ variable "openai_public_network_access_enabled" {
   description = "(Optional) Specifies whether public network access is allowed for the Azure OpenAI Service"
   type = bool
   default = true
-}
-
-variable "openai_deployments" {
-  description = "(Optional) Specifies the deployments of the Azure OpenAI Service"
-  type = list(object({
-    name = string
-    model = object({
-      name = string
-      version = string
-    })
-    rai_policy_name = string  
-  }))
-  default = [
-    {
-      name = "openai-gpt35turbo"
-      model = {
-        name = "gpt-35-turbo"
-        version = "0301"
-      }
-      rai_policy_name = ""
-    }
-  ] 
 }
 

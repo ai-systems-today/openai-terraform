@@ -16,6 +16,9 @@
 
 # Mono auto generated files
 mono_crash.*
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
 
 # Build results
 [Dd]ebug/
