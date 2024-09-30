@@ -2,6 +2,6 @@
 └─ openai-terraform
    ├─ README.md
    ├─ main.tf
-   ├─ outputs.tf
+   ├─ provider.tf
    ├─ terraform.tfvars
    └─ variables.tf
