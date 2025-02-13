@@ -10,14 +10,13 @@ resource "azurerm_resource_group" "rg" {
   location = var.location # The location/region where the resource group will be created
   tags     = var.tags     # Tags to categorize resources
 }
-
 #============= Create Azure Cognitive Search Resource for Indexing the Data ===================#
 # Creating an Azure Cognitive Search service for indexing and searching data.
 resource "azurerm_search_service" "ai-search-service" {
   name                = var.ai_search_name             # The name of the Azure Search service
   resource_group_name = azurerm_resource_group.rg.name # The resource group name where the service will reside
   location            = var.location                   # The location/region for the search service
-  sku                 = var.ai_search_sku              # The SKU/size of the Azure Search service (e.g., "Basic", "Standard")
+  sku                 = var.ai_search_sku              # The SKU/size of he Azure Search service (e.g., "Basic", "Standard")
 
   local_authentication_enabled = true      # Enable local authentication
   authentication_failure_mode  = "http403" # Set the failure mode for authentication
@@ -52,6 +51,7 @@ resource "azurerm_cognitive_account" "openai" {
 resource "azurerm_cognitive_deployment" "deployment" {
   name                 = var.deployment_name                 # The name of the deployment
   cognitive_account_id = azurerm_cognitive_account.openai.id # The ID of the cognitive account where the deployment will be created
+  version_upgrade_option = "OnceNewDefaultVersionAvailable"
 
   model {
     format  = "OpenAI"     # The format of the model
@@ -60,7 +60,8 @@ resource "azurerm_cognitive_deployment" "deployment" {
   }
 
   sku {
-    name = "Standard" # The SKU/size for the deployment
+    name     = "Standard" # The SKU/size for the deployment
+    capacity = 1
   }
 
   depends_on = [azurerm_cognitive_account.openai] # Ensure this deployment depends on the creation of the cognitive account
@@ -88,7 +89,7 @@ resource "azurerm_storage_account" "storage_account" {
 #============= Create a Private Storage Container in the Storage Account ==========#
 # Creating a storage container within the storage account to store data securely.
 resource "azurerm_storage_container" "storage_container" {
-  name                  = var.container_name                         # The name of the storage container
-  storage_account_id    = azurerm_storage_account.storage_account.id # The name of the storage account to which the container belongs
-  container_access_type = "private"                                  # Setting the container access level to private
+  name                  = var.container_name                           # The name of the storage container
+  storage_account_name  = azurerm_storage_account.storage_account.name # The name of the storage account to which the container belongs
+  container_access_type = "private"                                    # Setting the container access level to private
 }

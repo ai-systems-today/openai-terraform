@@ -1,7 +1,7 @@
-rg_name         = "rg-personal-bot"
-ai_search_name  = "ai-search"
+rg_name         = "rg-state"
+ai_search_name  = "ai-search-ai-systems"
 openai_name     = "openai"
-sa_name         = "storage"
-container_name  = "content"
+sa_name         = "satfstartext" # ✅ Ensure this matches the Terraform backend
+container_name  = "tfstate"      # ✅ Ensure this is "tfstate" (not "content")
 location        = "eastus"
 deployment_name = "chatgpt4o"
