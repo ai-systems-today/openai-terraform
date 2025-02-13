@@ -23,8 +23,8 @@ variable "storage_account_kind" {
   default     = "StorageV2"
   type        = string
 
-   validation {
-    condition = contains(["Storage", "StorageV2"], var.storage_account_kind)
+  validation {
+    condition     = contains(["Storage", "StorageV2"], var.storage_account_kind)
     error_message = "The account kind of the storage account is invalid."
   }
 }
@@ -34,8 +34,8 @@ variable "storage_account_tier" {
   default     = "Standard"
   type        = string
 
-   validation {
-    condition = contains(["Standard", "Premium"], var.storage_account_tier)
+  validation {
+    condition     = contains(["Standard", "Premium"], var.storage_account_tier)
     error_message = "The account tier of the storage account is invalid."
   }
 }
@@ -46,7 +46,7 @@ variable "storage_account_replication_type" {
   type        = string
 
   validation {
-    condition = contains(["LRS", "ZRS", "GRS", "GZRS", "RA-GRS", "RA-GZRS"], var.storage_account_replication_type)
+    condition     = contains(["LRS", "ZRS", "GRS", "GZRS", "RA-GRS", "RA-GZRS"], var.storage_account_replication_type)
     error_message = "The replication type of the storage account is invalid."
   }
 }
@@ -60,14 +60,14 @@ variable "container_name" {
 
 variable "tags" {
   description = "(Optional) Specifies tags for all the resources"
-  default     = {
+  default = {
     createdWith = "Terraform"
   }
 }
 
 variable "deployment_name" {
-  type= string
- default = ""
+  type    = string
+  default = ""
 }
 
 variable "ai_search_name" {
@@ -84,20 +84,20 @@ variable "ai_search_sku" {
 
 variable "openai_name" {
   description = "(Required) Specifies the name of the Azure OpenAI Service"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
 
 variable "openai_sku_name" {
   description = "(Optional) Specifies the sku name for the Azure OpenAI Service"
-  type = string
-  default = "S0"
+  type        = string
+  default     = "S0"
 }
 
 
 variable "openai_public_network_access_enabled" {
   description = "(Optional) Specifies whether public network access is allowed for the Azure OpenAI Service"
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }
 

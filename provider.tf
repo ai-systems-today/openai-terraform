@@ -6,10 +6,10 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name   = "rg-state"
-    storage_account_name  = "satfstaterxt"
-    container_name        = "catfstaterxt"
-    key                   = "terraform.tfstate"
+    resource_group_name  = "rg-state"
+    storage_account_name = "satfstartext"
+    container_name       = "catfstaterxt"
+    key                  = "terraform.tfstate"
   }
 }
 
