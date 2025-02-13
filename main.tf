@@ -89,6 +89,6 @@ resource "azurerm_storage_account" "storage_account" {
 # Creating a storage container within the storage account to store data securely.
 resource "azurerm_storage_container" "storage_container" {
   name                  = var.container_name                       # The name of the storage container
-  storage_account_name  = azurerm_storage_account.storage_account.name # The name of the storage account to which the container belongs
+  storage_account_id = azurerm_storage_account.storage_account.id # The name of the storage account to which the container belongs
   container_access_type = "private"                                # Setting the container access level to private
 }
